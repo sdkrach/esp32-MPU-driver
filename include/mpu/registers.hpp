@@ -14,6 +14,7 @@
 
 #include <stdint.h>
 #include "sdkconfig.h"
+#include "mpu/compat.hpp"
 
 /*! MPU Driver namespace */
 namespace mpud

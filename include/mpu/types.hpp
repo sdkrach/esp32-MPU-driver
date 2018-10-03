@@ -74,7 +74,7 @@ typedef enum {
     DLPF_5HZ         = 6,
 #ifdef CONFIG_MPU6050
     DLPF_2100HZ_NOLPF = 7
-#elif CONFIG_MPU6500
+#elif defined CONFIG_MPU6500
     DLPF_3600HZ_NOLPF     = 7
 #endif
 } dlpf_t;

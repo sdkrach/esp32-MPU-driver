@@ -29,10 +29,10 @@
 
 static const char* TAG = "example";
 
-static constexpr int MOSI = 22;
-static constexpr int MISO = 21;
-static constexpr int SCLK = 23;
-static constexpr int CS = 16;
+static constexpr int MOSI = 23;
+static constexpr int MISO = 19;
+static constexpr int SCLK = 18;
+static constexpr int CS = 17;
 static constexpr uint32_t CLOCK_SPEED = 1000000;  // up to 1MHz for all registers, and 20MHz for sensor data registers only
 
 extern "C" void app_main() {
@@ -41,8 +41,9 @@ extern "C" void app_main() {
 
     spi_device_handle_t mpu_spi_handle;
     // Initialize SPI on HSPI host through SPIbus interface:
-    hspi.begin(MOSI, MISO, SCLK);
-    hspi.addDevice(0, CLOCK_SPEED, CS, &mpu_spi_handle);
+    vspi.begin(MOSI, MISO, SCLK);
+    vspi.addDevice(0, CLOCK_SPEED, CS, &mpu_spi_handle);
+
 
     // Or directly with esp-idf API:
     /*
@@ -72,7 +73,7 @@ extern "C" void app_main() {
     */
 
     MPU_t MPU;  // create a default MPU object
-    MPU.setBus(hspi);  // set bus port, not really needed here since default is HSPI
+    MPU.setBus(vspi);  // set bus port, not really needed here since default is HSPI
     MPU.setAddr(mpu_spi_handle);  // set spi_device_handle, always needed!
 
     // Great! Let's verify the communication

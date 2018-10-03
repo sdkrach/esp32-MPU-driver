@@ -2093,7 +2093,7 @@ esp_err_t MPU::selfTest(selftest_t* result)
 #ifdef CONFIG_MPU6050
     constexpr accel_fs_t kAccelFS = ACCEL_FS_16G;
     constexpr gyro_fs_t kGyroFS   = GYRO_FS_250DPS;
-#elif CONFIG_MPU6500
+#elif defined CONFIG_MPU6500
     constexpr accel_fs_t kAccelFS = ACCEL_FS_2G;
     constexpr gyro_fs_t kGyroFS   = GYRO_FS_250DPS;
 #endif
